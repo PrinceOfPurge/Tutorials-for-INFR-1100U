@@ -13,10 +13,13 @@ public static class InputManager
        
         _gameControls.Permanent.Enable();
 
-        _gameControls.InGame.Movement.performed += hi => 
+        _gameControls.InGame.Movement.performed += hi =>
         { 
             myPlayer.SetMovementDirection(hi.ReadValue<Vector3>());
+    
         };
+
+    
 
     }
 
