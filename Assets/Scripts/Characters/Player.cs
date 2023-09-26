@@ -33,11 +33,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += speed * Time.deltaTime * _moveDirection;
-        if (Input.GetKey(KeyCode.Space))
+        transform.position +=Speed * Time.deltaTime * _moveDirection;
+        
         {
-            rb.AddForce(Vector3.forward * (move.y * Time.deltaTime * walkSpeed),Space.Self);
-            rb.AddForce(Vector3.forward * (move.x * Time.deltaTime * walkSpeed),Space.Self);
             isGrounded = Physics.Raycast(transform.position, -Vector3.up, GetComponent<Collider>(). bounds.extents.y);
         }
     }
@@ -46,6 +44,7 @@ public class Player : MonoBehaviour
     {
         if (isGrounded){
         rb.velocity = new Vector3(rb.velocity.x, jump, rb.velocity.z);
+        rb.AddForce(Vector3.forward * (move.y * Time.deltaTime * walkSpeed), ForceMode.Impulse);
         }
     }
     public void SetMovementDirection(Vector3 newDirection)
