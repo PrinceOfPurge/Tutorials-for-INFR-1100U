@@ -10,15 +10,16 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float Speed;
-
-    public float walkSpeed = 5f;
+    [SerializeField] private float Speed ;
+        Vector2 move;
+        Vector2 rotate;
+        Rigidbody rb;
     private float distanceToGround;
-    bool isGrounded;
-    public float jump = 5f;
-    Vector2 move;
-    Vector2 rotate;
-    public Rigidbody rb;
+     bool isGrounded;
+     public float jump = 5f;
+    public float walkSpeed = 5f;
+    
+    
 
     private Vector3 _moveDirection;
     // Start is called before the first frame update

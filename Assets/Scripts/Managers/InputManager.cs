@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,7 +20,11 @@ public static class InputManager
     
         };
 
+         _gameControls.InGame.Jump.performed += hi =>
+        { 
+            myPlayer.SetMovementDirection(hi.ReadValue<Vector3>());
     
+        };
 
     }
 
