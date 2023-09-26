@@ -23,11 +23,9 @@ public static class InputManager
 
     }
 
-    public static void SetGameControls()
-    {
+    public static void SetGameControls() {
         _gameControls.InGame.Enable();
-        _gameControls.UI.Disable();
-        
+        _gameControls.UI.Disable();    
     }
 
     public static void UIMode()
