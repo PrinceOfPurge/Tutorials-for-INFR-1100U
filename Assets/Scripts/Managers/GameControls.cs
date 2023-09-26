@@ -40,7 +40,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""name"": ""Jump"",
                     ""type"": ""PassThrough"",
                     ""id"": ""aa470d2d-dcb0-4121-9a91-bc63cccc4bc3"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
