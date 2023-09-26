@@ -24,10 +24,9 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     
     private void Awake(){
-       
+        InputManager.Init(this);
         InputManager.SetGameControls();
         rb = GetComponent<Rigidbody>();
-        InputManager.Init(myPlayer:this);
     }
 
     // Update is called once per frame
