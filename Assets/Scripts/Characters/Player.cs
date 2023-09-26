@@ -1,12 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using JetBrains.Annotations;
-using UnityEditor.Callbacks;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Scripting.APIUpdating;
-using UnityEngine.UIElements;
+
 
 public class Player : MonoBehaviour
 {
@@ -23,8 +16,9 @@ public class Player : MonoBehaviour
 
     private Vector3 _moveDirection;
     // Start is called before the first frame update
-    
+    float depth;
     private void Awake(){
+        depth= GetComponent<Collider>(). bounds.extents.y;
         InputManager.Init(this);
         InputManager.SetGameControls();
         rb = GetComponent<Rigidbody>();
@@ -35,16 +29,17 @@ public class Player : MonoBehaviour
     {
         transform.position +=Speed * Time.deltaTime * _moveDirection;
         
-        {
-            isGrounded = Physics.Raycast(transform.position, -Vector3.up, GetComponent<Collider>(). bounds.extents.y);
-        }
+        
+            isGrounded = Physics.Raycast(transform.position, Vector3.down, depth);
+        Debug.DrawRay(transform.position, Vector3.down * depth);
     }
 
     public void Jump()
     {
         if (isGrounded){
+            Debug.Log ("can jump");
         rb.velocity = new Vector3(rb.velocity.x, jump, rb.velocity.z);
-        rb.AddForce(Vector3.forward * (move.y * Time.deltaTime * walkSpeed), ForceMode.Impulse);
+        rb.AddForce(Vector3.up * jump, ForceMode.Impulse);
         }
     }
     public void SetMovementDirection(Vector3 newDirection)
@@ -52,8 +47,4 @@ public class Player : MonoBehaviour
         _moveDirection = newDirection;
     }
     
-    internal void SetMovementDirection(Func<Vector3> readValue)
-    {
-        throw new NotImplementedException();
-    }
 }

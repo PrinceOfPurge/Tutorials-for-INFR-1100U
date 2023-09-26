@@ -22,7 +22,7 @@ public static class InputManager
 
          _gameControls.InGame.Jump.performed += hi =>
         { 
-            myPlayer.SetMovementDirection(hi.ReadValue<Vector3>());
+            myPlayer.Jump();
     
         };
 
